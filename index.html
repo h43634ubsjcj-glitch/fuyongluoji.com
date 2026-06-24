@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AIbangOS · 快捷设置</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+:root {
+    --bg: #f5f0e6;
+    --card-bg: #fffdf8;
+    --primary-red: #c83c2c;
+    --btn-black: #1a1714;
+    --text-main: #222222;
+    --text-sub: #666666;
+    --text-light: #999999;
+    --tab-inactive: #f0ebe0;
+    --tip-bg: #f9ecea;
+    --tag-bg: #f9ecea;
+    --input-bg: #f0ebe0;
+    --warn-bg: #f8f0d4;
+    --warn-text: #8a6d1e;
+    --border-radius: 12px;
+    --card-radius: 14px;
+}
+body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+    padding: 32px 20px 60px;
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 15px;
+}
+
+/* 页面切换 */
+.page { display: none; }
+.page.active { display: block; }
+
+/* 返回按钮 */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.back-btn::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary-red);
+}
+
+/* 头部 */
+.header {
+    margin-bottom: 40px;
+}
+.header-title {
+    position: relative;
+    margin-bottom: 8px;
+}
+.header-title h1 {
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1;
+    display: inline-block;
+}
+.header-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 55%;
+    height: 3px;
+    background-color: var(--primary-red);
+}
+.header-version {
+    display: inline-block;
+    margin-left: 12px;
+    font-size: 13px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    vertical-align: bottom;
+    margin-bottom: 12px;
+}
+.header-subtitle {
+    font-size: 36px;
+    font-weight: 600;
+    margin: 20px 0 16px;
+    line-height: 1.2;
+}
+.header-subtitle span {
+    color: var(--primary-red);
+    font-style: italic;
+}
+.header-desc {
+    color: var(--text-sub);
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+.header-desc strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
+.nav {
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+.nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 500;
+}
+.nav span {
+    margin: 0 6px;
+    color: var(--text-light);
+}
+.browser-tags {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+.browser-tag {
+    background: #ffffff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: var(--text-sub);
+}
+.scroll-tip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-light);
+    font-size: 14px;
+    margin-bottom: 32px;
+}
+.scroll-tip::before {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: var(--text-light);
+}
+
+/* 卡片通用 */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--card-radius);
+    padding: 28px 26px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    position: relative;
+}
+.card-number {
+    color: var(--text-light);
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+.card-icon {
+    position: absolute;
+    top: 26px;
+    right: 26px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--tag-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+.card h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+.card p {
+    color: var(--text-sub);
+    margin-bottom: 16px;
+    font-size: 15px;
+}
+.inline-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--primary-red);
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    margin: 0 2px;
+}
+
+/* 按钮 */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: var(--btn-black);
+    color: #ffffff;
+    padding: 18px 24px;
+    border-radius: var(--border-radius);
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 12px 0;
+    text-align: left;
+    transition: opacity 0.2s;
+}
+.btn:hover {
+    opacity: 0.9;
+}
+.btn-red {
+    background: var(--primary-red);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid #e0dcd2;
+}
+
+/* 提示条 */
+.tip-bar {
+    background: var(--tip-bg);
+    color: var(--text-sub);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 8px;
+}
+.tip-bar::before {
+    content: "●";
+    color: var(--primary-red);
+    margin-right: 8px;
+    font-size: 10px;
+    vertical-align: middle
