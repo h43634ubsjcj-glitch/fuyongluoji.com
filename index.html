@@ -251,4 +251,755 @@ body {
     color: var(--primary-red);
     margin-right: 8px;
     font-size: 10px;
-    vertical-align: middle
+    vertical-align: middle;
+}
+
+/* 警告条 */
+.warn-bar {
+    background: var(--warn-bg);
+    color: var(--warn-text);
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin: 20px 0;
+    line-height: 1.6;
+}
+.warn-bar::before {
+    content: "⚠️";
+    margin-right: 8px;
+}
+
+/* Tab组件 */
+.tab-group {
+    display: flex;
+    background: var(--tab-inactive);
+    border-radius: var(--border-radius);
+    padding: 4px;
+    margin: 16px 0 12px;
+}
+.tab-btn {
+    flex: 1;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text-sub);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.tab-btn.active {
+    background: #ffffff;
+    color: var(--text-main);
+    font-weight: 500;
+}
+.tab-desc {
+    margin-bottom: 12px;
+}
+.tab-desc-item {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin: 4px 0;
+}
+.tab-desc-item .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--primary-red);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 6px;
+}
+
+/* 参数展示框 */
+.param-box {
+    background: var(--input-bg);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.8;
+    margin-top: 8px;
+}
+
+/* 表单输入 */
+.form-group {
+    margin: 16px 0;
+}
+.form-label {
+    font-size: 14px;
+    color: var(--text-sub);
+    margin-bottom: 6px;
+    display: block;
+}
+.intent-input {
+    width: 100%;
+    background: var(--input-bg);
+    border: none;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 14px;
+    color: var(--text-main);
+    outline: none;
+}
+.intent-input::placeholder {
+    color: #aaa;
+}
+.btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+.btn-row .btn {
+    flex: 1;
+    margin: 0;
+    justify-content: center;
+}
+
+/* 常见问题 */
+.faq-section {
+    margin-top: 48px;
+}
+.faq-title {
+    position: relative;
+    text-align: center;
+    margin-bottom: 32px;
+    color: var(--text-light);
+    font-size: 13px;
+    letter-spacing: 4px;
+}
+.faq-title::before,
+.faq-title::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 42%;
+    height: 1px;
+    background: #e5e0d4;
+}
+.faq-title::before { left: 0; }
+.faq-title::after { right: 0; }
+
+.faq-section h3 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+.faq-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #eae5d8;
+}
+.faq-item:last-child {
+    border-bottom: none;
+}
+.faq-q {
+    color: var(--primary-red);
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+.faq-q::before {
+    content: "Q. ";
+    margin-right: 2px;
+}
+.faq-a {
+    color: var(--text-sub);
+    font-size: 14px;
+    padding-left: 22px;
+}
+
+/* 页脚 */
+footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #eae5d8;
+    color: var(--text-light);
+    font-size: 13px;
+}
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.footer-meta {
+    margin-bottom: 20px;
+}
+.footer-meta a {
+    color: var(--primary-red);
+    text-decoration: none;
+}
+.bilibili-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ffffff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.footer-bottom {
+    margin-top: 24px;
+    font-size: 12px;
+    color: #aaa;
+}
+</style>
+</head>
+<body>
+
+<!-- 主页面 -->
+<div id="page-home" class="page active">
+<div class="header">
+    <div class="header-title">
+        <h1>AIbangOS</h1>
+        <span class="header-version">TOOLKIT V1.1</span>
+    </div>
+    <div class="header-subtitle">系统<span>快捷设置</span></div>
+    <p class="header-desc">
+        一键直达系统深层设置。<strong>通过安全漏洞</strong>安装第三方 App、配置<br>证书与网络。
+    </p>
+    <div class="nav">
+        <a href="#install">安装 App</a>
+        <span>·</span>
+        <a href="#cert">CA 证书</a>
+        <span>·</span>
+        <a href="#network">网络设置</a>
+        <span>·</span>
+        <a href="#more">更多</a>
+    </div>
+    <div class="browser-tags">
+        <div class="browser-tag">Via</div>
+        <div class="browser-tag">悟空</div>
+        <div class="browser-tag">头条</div>
+        <div class="browser-tag">夸克</div>
+    </div>
+    <div class="scroll-tip">向下浏览</div>
+</div>
+
+
+<!-- 卡片01 安装App -->
+<div class="card" id="install">
+    <div class="card-number">01 / 06</div>
+    <div class="card-icon">📱</div>
+    <h2>安装 App</h2>
+    <p>AIbangOS 原生不支持安装第三方应用，所有安装均需通过系统安全漏洞实现。根据你的系统版本选择对应的安装入口。</p>
+    <button class="btn" onclick="goPage('install')">
+        前往安装页
+        <span>→</span>
+    </button>
+    <div class="tip-bar">不同系统版本的安装入口不同，进入后请根据版本号选择对应方案。</div>
+</div>
+
+<!-- 卡片02 CA证书 -->
+<div class="card" id="cert">
+    <div class="card-number">02 / 06</div>
+    <div class="card-icon">🔒</div>
+    <h2>CA 证书安装</h2>
+    <p>直接跳转至系统证书安装页面，无需逐层翻找设置菜单。支持从存储设备导入
+        <span class="inline-tag">.cer</span> 或 <span class="inline-tag">.crt</span> 格式证书。
+    </p>
+    
+    <div class="tab-group" data-card="cert">
+        <div class="tab-btn active" data-tab="js">通用入口 - JS</div>
+        <div class="tab-btn" data-tab="ys">通用入口 - YS</div>
+    </div>
+    <div class="tab-desc">
+        <div class="tab-desc-item"><span class="tag">通用入口-JS</span>适用于 t/p60 机型外的 AIbangOS 6.0 以下机型</div>
+        <div class="tab-desc-item"><span class="tag">通用入口-YS</span>适用于 t/p60 机型 或 AIbangOS 6.0 及以上</div>
+    </div>
+    <button class="btn" onclick="goIntent('cert')">
+        跳转至证书安装
+        <span>→</span>
+    </button>
+</div>
+
+<!-- 卡片03 网络 -->
+<div class="card" id="network">
+    <div class="card-number">03 / 06</div>
+    <div class="card-icon">🌐</div>
+    <h2>网络与互联网</h2>
+    <p>进入「网络和互联网」设置页，可快速找到
+        <span class="inline-tag">私人 DNS</span>、VPN、Wi-Fi 等选项。
+    </p>
+    
+    <div class="tab-group" data-card="network">
+        <div class="tab-btn active" data-tab="js">通用入口 - JS</div>
+        <div class="tab-btn" data-tab="ys">通用入口 - YS</div>
+    </div>
+    <div class="tab-desc">
+        <div class="tab-desc-item"><span class="tag">通用入口-JS</span>适用于 t/p60 机型外的 AIbangOS 6.0 以下机型</div>
+        <div class="tab-desc-item"><span class="tag">通用入口-YS</span>适用于 t/p60 机型 或 AIbangOS 6.0 及以上</div>
+    </div>
+    <button class="btn" onclick="goIntent('network')">
+        跳转至网络设置
+        <span>→</span>
+    </button>
+    <div class="tip-bar">私人 DNS 仅支持域名格式的 DoT 地址（如 <span class="inline-tag">dns.example.com</span>），不支持直接填写 IP 地址。</div>
+</div>
+
+<!-- 卡片04 系统设置 -->
+<div class="card" id="system">
+    <div class="card-number">04 / 06</div>
+    <div class="card-icon">🛠️</div>
+    <h2>系统设置</h2>
+    <p>包含语言、日期时间、备份、
+        <span class="inline-tag">开发者选项</span>、重置等系统级设置。
+    </p>
+    
+    <div class="tab-group" data-card="system">
+        <div class="tab-btn active" data-tab="js">通用入口 - JS</div>
+        <div class="tab-btn" data-tab="ys">通用入口 - YS</div>
+    </div>
+    <div class="tab-desc">
+        <div class="tab-desc-item"><span class="tag">通用入口-JS</span>适用于 t/p60 机型外的 AIbangOS 6.0 以下机型</div>
+        <div class="tab-desc-item"><span class="tag">通用入口-YS</span>适用于 t/p60 机型 或 AIbangOS 6.0 及以上</div>
+    </div>
+    <button class="btn" onclick="goIntent('system')">
+        跳转至系统设置
+        <span>→</span>
+    </button>
+</div>
+
+<!-- 卡片05 关于设备 -->
+<div class="card" id="about">
+    <div class="card-number">05 / 06</div>
+    <div class="card-icon">📳</div>
+    <h2>关于设备</h2>
+    <p>跳转至「关于本机」页面。系统版本、型号等设备信息均在此查看，连续点击版本号可开启<span class="inline-tag">开发者选项</span>。</p>
+    <p>不同设备的 Intent 参数可能存在差异，进入测试页面后会提供 <strong>5 种方案</strong> 供逐一尝试。</p>
+    <button class="btn btn-red" onclick="goPage('test')">
+        进入跳转测试页
+        <span>→</span>
+    </button>
+    <div class="tip-bar">需要开启 <strong style="color:var(--primary-red)">开发者选项</strong>？进入「关于本机」后连续点击「版本号」7 次即可激活。</div>
+</div>
+
+<!-- 卡片06 自定义Intent -->
+<div class="card" id="more">
+    <div class="card-number">06 / 06</div>
+    <div class="card-icon">⚙️</div>
+    <h2>自定义 Intent</h2>
+    <p>填写 Intent URI 或分项拼装，打开任意系统设置页面。</p>
+
+    <div class="form-group">
+        <label class="form-label">方式一：直接填写完整 Intent URI</label>
+        <input type="text" class="intent-input" id="directUri" placeholder="intent:#Intent;...;end">
+        <p style="font-size:13px; color:var(--text-sub); margin-top:6px;">填了这一栏就忽略下面的拼装项，直接用这个。</p>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">方式二：分项拼装</label>
+        
+        <div class="form-group" style="margin:12px 0;">
+            <label class="form-label">component（组件）</label>
+            <input type="text" class="intent-input" id="comp" value="com.android.settings/.ZybSettings">
+        </div>
+        <div class="form-group" style="margin:12px 0;">
+            <label class="form-label">show_fragment（目标页面，可留空）</label>
+            <input type="text" class="intent-input" id="frag" value="com.android.settings.security.InstallCertificateFromStorage">
+        </div>
+        <div class="form-group" style="margin:12px 0;">
+            <label class="form-label">action（可留空）</label>
+            <input type="text" class="intent-input" id="act" value="android.settings.SETTINGS">
+        </div>
+        <div class="form-group" style="margin:12px 0;">
+            <label class="form-label">data（可留空）</label>
+            <input type="text" class="intent-input" id="data" value="package:com.example.app">
+        </div>
+    </div>
+
+    <input type="text" class="intent-input" id="resultUri" value="intent:#Intent;end" readonly>
+
+    <div class="btn-row">
+        <button class="btn" onclick="openCustomIntent()">打开此 Intent</button>
+        <button class="btn btn-outline" onclick="copyUri()">复制 URI</button>
+    </div>
+</div>
+
+
+<!-- 常见问题 -->
+<div class="faq-section">
+    <div class="faq-title">HELP</div>
+    <h3>常见问题</h3>
+    
+    <div class="faq-item">
+        <div class="faq-q">点击按钮没有任何反应</div>
+        <div class="faq-a">请确认你正在使用推荐的浏览器：Via、悟空浏览器、今日头条、夸克。其他浏览器可能不支持 intent 协议跳转。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">弹出授权弹窗后停留在设置首页</div>
+        <div class="faq-a">说明当前入口不匹配你的设备。t/p60 机型或 AIbangOS 6.0 及以上请选择「通用入口-YS」，其余机型选择「通用入口-JS」。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">跳转成功但找不到「私人 DNS」选项</div>
+        <div class="faq-a">进入网络设置页后，向下滑动即可找到「私人 DNS」入口。</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q">如何开启开发者选项</div>
+        <div class="faq-a">跳转至「关于本机」页面（详见卡片05），连续点击「版本号」7 次即可激活开发者选项，之后可在「系统设置」中找到。</div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<footer>
+    <div class="footer-top">
+        <span>AIbangOS</span>
+        <span>2026.06.09</span>
+    </div>
+    <div class="footer-meta">
+        技术支持 · <a href="mailto:aonosaki@outlook.com">aonosaki@outlook.com</a> &nbsp;&nbsp; 作者 · k-on唯
+    </div>
+    <a href="#" class="bilibili-btn">
+        <span>📺</span>
+        B站主页
+    </a>
+    <div class="footer-bottom">
+        该网站全部内容由 AI 开发，仅作学习指导使用。
+    </div>
+</footer>
+</div>
+
+
+<!-- 安装App二级页面 -->
+<div id="page-install" class="page">
+<button class="back-btn" onclick="goPage('home')">返回首页</button>
+
+<div class="header">
+    <div class="header-title">
+        <h1>AIbangOS</h1>
+        <span class="header-version">APP INSTALLER</span>
+    </div>
+    <div class="header-subtitle">安装<span>第三方App</span></div>
+    <p class="header-desc">
+        AIbangOS 原生不支持安装第三方应用，所有安装均需通过系统安全漏洞实现。根据系统版本选择对应方案。
+    </p>
+    <div class="scroll-tip">向下选择</div>
+</div>
+
+<div class="card">
+    <div class="card-number">01 / 02</div>
+    <div class="card-icon">📡</div>
+    <h2>AIbangOS ≤ 6.2.0</h2>
+    <p>适用于 6.2.0 及以下所有版本。利用应用商店在代理环境下仍可下载的漏洞，通过抓包工具拦截请求、替换下载链接，实现安装第三方 App。</p>
+    <button class="btn">
+        查看详细教程
+        <span>→</span>
+    </button>
+    <div class="tip-bar">教程包含所需工具、配置步骤和完整操作流程。</div>
+</div>
+
+<div class="card">
+    <div class="card-number">02 / 02</div>
+    <div class="card-icon">🐛</div>
+    <h2>AIbangOS &lt; 3.8</h2>
+    <p>适用于 3.8 以下版本。利用包名大小写漏洞，无需授予「未知来源」权限，输入本地 APK 路径即可安装。3.8 及以上已修复。</p>
+    <button class="btn">
+        查看详细教程
+        <span>→</span>
+    </button>
+    <div class="tip-bar">提供 JC Code V2（修改版）下载及使用说明。</div>
+</div>
+
+<div class="warn-bar">
+    所有方式均基于系统漏洞，请确保 App 来源可信。若跳转无反应，请使用推荐浏览器：Via、悟空、头条、夸克。
+</div>
+
+<footer>
+    <div class="footer-top">
+        <span>AIbangOS</span>
+        <span>2026.06.09</span>
+    </div>
+    <div class="footer-meta">
+        联系邮箱 · <a href="mailto:aono_saki@outlook.com">aono_saki@outlook.com</a> &nbsp;&nbsp; 作者 · k-on唯
+    </div>
+    <a href="#" class="bilibili-btn">
+        <span>📺</span>
+        B站主页
+    </a>
+    <div class="footer-bottom">
+        该网站全部内容由 AI 开发，仅作学习指导使用。
+    </div>
+</footer>
+</div>
+
+
+<!-- 关于本机跳转测试二级页面 -->
+<div id="page-test" class="page">
+<button class="back-btn" onclick="goPage('home')">返回工具箱</button>
+
+<div class="header">
+    <div class="header-title">
+        <h1>AIbangOS</h1>
+        <span class="header-version">INTENT TEST</span>
+    </div>
+    <div class="header-subtitle">关于本机 <span>跳转测试</span></div>
+    <p class="header-desc">
+        逐个测试哪种方案能在你的设备上正常跳转。请打开 ADB 日志抓取报错信息。
+    </p>
+    <div class="scroll-tip">向下测试</div>
+</div>
+
+<!-- 方案一 -->
+<div class="card">
+    <div class="card-number">01 / 05</div>
+    <div class="card-icon">📋</div>
+    <h2>方案一：Fragment 跳转</h2>
+    <p>使用 <span class="inline-tag">ZybSettings</span> + <span class="inline-tag">MyDeviceInfoFragment</span>，标准 Fragment 分发入口。</p>
+    
+    <div class="tab-group" data-card="test1">
+        <div class="tab-btn active" data-tab="js">通用入口 - JS</div>
+        <div class="tab-btn" data-tab="ys">通用入口 - YS</div>
+    </div>
+    <div class="tab-desc">
+        <div class="tab-desc-item"><span class="tag">通用入口-JS</span>使用 <span class="inline-tag">.ZybSettings</span></div>
+        <div class="tab-desc-item"><span class="tag">通用入口-YS</span>使用 <span class="inline-tag">.zyb.ZybSettings</span></div>
+    </div>
+    <button class="btn" onclick="goIntent('test1')">
+        跳转关于本机
+        <span>→</span>
+    </button>
+    <div class="param-box">
+        component=com.android.settings/.ZybSettings<br>
+        fragment=com.android.settings.deviceinfo.MyDeviceInfoFragment
+    </div>
+</div>
+
+<!-- 方案二 -->
+<div class="card">
+    <div class="card-number">02 / 05</div>
+    <div class="card-icon">🔀</div>
+    <h2>方案二：SubSettings 入口</h2>
+    <p>使用 <span class="inline-tag">SubSettings</span> 作为通用容器入口，搭配同一个 Fragment。两个版本 URI 相同。</p>
+    
+    <div class="tab-group" data-card="test2">
+        <div class="tab-btn active" data-tab="js">通用入口 - JS</div>
+        <div class="tab-btn" data-tab="ys">通用入口 - YS</div>
+    </div>
+    <div class="tab-desc">
+        <div class="tab-desc-item"><span class="tag">通用</span>两个版本 URI 相同，选任意一个即可</div>
+    </div>
+    <button class="btn" onclick="goIntent('test2')">
+        跳转关于本机
+        <span>→</span>
+    </button>
+    <div class="param-box">
+        component=com.android.settings/.SubSettings<br>
+        fragment=com.android.settings.deviceinfo.MyDeviceInfoFragment
+    </div>
+</div>
+
+<!-- 方案三 -->
+<div class="card">
+    <div class="card-number">03 / 05</div>
+    <div class="card-icon">⚡</div>
+    <h2>方案三：Activity 直跳</h2>
+    <p>直接调用 <span class="inline-tag">Settings$MyDeviceInfoActivity</span>，绕过 Fragment 分发机制，不区分版本。</p>
+    
+    <button class="btn" onclick="goIntent('test3')">
+        通用入口
+        <span>→</span>
+    </button>
+    <div class="param-box">
+        component=com.android.settings/.Settings$MyDeviceInfoActivity
+    </div>
+</div>
+
+<!-- 方案四 -->
+<div class="card">
+    <div class="card-number">04 / 05</div>
+    <div class="card-icon">📦</div>
+    <h2>方案四：完整 Intent 参数</h2>
+    <p>在方案三基础上增加 <span class="inline-tag">action</span> 和 <span class="inline-tag">category</span>，模拟系统快捷方式的完整 Intent。</p>
+    
+    <button class="btn" onclick="goIntent('test4')">
+        通用入口
+        <span>→</span>
+    </button>
+    <div class="param-box">
+        action=android.intent.action.MAIN<br>
+        category=com.android.settings.SHORTCUT<br>
+        component=com.android.settings/.Settings$MyDeviceInfoActivity
+    </div>
+</div>
+
+<!-- 方案五 -->
+<div class="card">
+    <div class="card-number">05 / 05</div>
+    <div class="card-icon">🔍</div>
+    <h2>方案五：SETTINGS Action</h2>
+    <p>使用 <span class="inline-tag">com.android.settings.action.SETTINGS</span> action 配合 Fragment 参数，模拟搜索功能的跳转方式。</p>
+    
+    <button class="btn" onclick="goIntent('test5')">
+        通用入口
+        <span>→</span>
+    </button>
+    <div class="param-box">
+        action=com.android.settings.action.SETTINGS<br>
+        fragment=com.android.settings.deviceinfo.MyDeviceInfoFragment
+    </div>
+</div>
+
+<div class="warn-bar">
+    测试时请打开 ADB 日志抓取，把报错信息发给开发者分析。推荐使用 Via、悟空浏览器、今日头条、夸克 进行测试。
+</div>
+
+<footer>
+    <div class="footer-top">
+        <span>AIbangOS</span>
+        <span>2026.06.09</span>
+    </div>
+    <div class="footer-meta">
+        技术支持 · <a href="mailto:aonosaki@outlook.com">aonosaki@outlook.com</a> &nbsp;&nbsp; 作者 · k-on唯
+    </div>
+    <a href="#" class="bilibili-btn">
+        <span>📺</span>
+        B站主页
+    </a>
+    <div class="footer-bottom">
+        该页面为 Intent 跳转测试用途，请确保已开启 ADB 日志抓取。
+    </div>
+</footer>
+</div>
+
+
+<script>
+// 页面切换
+function goPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    window.scrollTo(0, 0);
+}
+
+// Tab切换
+document.querySelectorAll('.tab-group').forEach(group => {
+    const tabs = group.querySelectorAll('.tab-btn');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+        });
+    });
+});
+
+// 统一套用二级页面已验证的跳转逻辑与参数格式
+const intentMap = {
+    // 一级页面修复：证书、网络、系统设置，统一标准Intent格式
+    cert: {
+        js: 'intent:#Intent;action=android.settings.INSTALL_CERTIFICATE;end',
+        ys: 'intent:#Intent;component=com.android.settings/.security.InstallCertificateFromStorage;end'
+    },
+    network: {
+        js: 'intent:#Intent;action=android.settings.WIRELESS_SETTINGS;end',
+        ys: 'intent:#Intent;component=com.android.settings/.network.NetworkDashboardActivity;end'
+    },
+    system: {
+        js: 'intent:#Intent;action=android.settings.SETTINGS;end',
+        ys: 'intent:#Intent;component=com.android.settings/.MainSettings;end'
+    },
+    // 二级页面已生效的参数，保持不变
+    test1: {
+        js: 'intent:#Intent;component=com.android.settings/.ZybSettings;S.fragment=com.android.settings.deviceinfo.MyDeviceInfoFragment;end',
+        ys: 'intent:#Intent;component=com.android.settings/.zyb.ZybSettings;S.fragment=com.android.settings.deviceinfo.MyDeviceInfoFragment;end'
+    },
+    test2: 'intent:#Intent;component=com.android.settings/.SubSettings;S.fragment=com.android.settings.deviceinfo.MyDeviceInfoFragment;end',
+    test3: 'intent:#Intent;component=com.android.settings/.Settings$MyDeviceInfoActivity;end',
+    test4: 'intent:#Intent;action=android.intent.action.MAIN;category=com.android.settings.SHORTCUT;component=com.android.settings/.Settings$MyDeviceInfoActivity;end',
+    test5: 'intent:#Intent;action=com.android.settings.action.SETTINGS;S.fragment=com.android.settings.deviceinfo.MyDeviceInfoFragment;end'
+};
+
+// 获取当前选中的Tab
+function getCurrentTab(cardName) {
+    const group = document.querySelector(`.tab-group[data-card="${cardName}"]`);
+    if (!group) return 'js';
+    const active = group.querySelector('.tab-btn.active');
+    return active ? active.dataset.tab : 'js';
+}
+
+// 跳转函数（一级二级页面共用同一套生效逻辑）
+function goIntent(type) {
+    let uri;
+    if (['test2','test3','test4','test5'].includes(type)) {
+        uri = intentMap[type];
+    } else {
+        const tab = getCurrentTab(type);
+        uri = intentMap[type][tab];
+    }
+    try {
+        window.location.href = uri;
+    } catch(e) {
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = uri;
+        document.body.appendChild(iframe);
+        setTimeout(() => document.body.removeChild(iframe), 1000);
+    }
+}
+
+// 拼装自定义Intent
+function buildIntent() {
+    const comp = document.getElementById('comp').value.trim();
+    const frag = document.getElementById('frag').value.trim();
+    const act = document.getElementById('act').value.trim();
+    const data = document.getElementById('data').value.trim();
+    
+    let uri = 'intent:#Intent;';
+    if (act) uri += 'action=' + act + ';';
+    if (comp) uri += 'component=' + comp + ';';
+    if (data) uri += 'data=' + data + ';';
+    if (frag) uri += 'S.show_fragment=' + frag + ';';
+    uri += 'end';
+    
+    document.getElementById('resultUri').value = uri;
+    return uri;
+}
+
+['comp','frag','act','data'].forEach(id => {
+    document.getElementById(id).addEventListener('input', buildIntent);
+});
+buildIntent();
+
+function openCustomIntent() {
+    const direct = document.getElementById('directUri').value.trim();
+    const uri = direct ? direct : buildIntent();
+    try {
+        window.location.href = uri;
+    } catch(e) {
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = uri;
+        document.body.appendChild(iframe);
+        setTimeout(() => document.body.removeChild(iframe), 1000);
+    }
+}
+
+function copyUri() {
+    const uri = document.getElementById('resultUri').value;
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(uri).then(() => {
+            alert('URI 已复制');
+        });
+    } else {
+        const input = document.getElementById('resultUri');
+        input.select();
+        document.execCommand('copy');
+        alert('URI 已复制');
+    }
+}
+
+// 锚点平滑滚动
+document.querySelectorAll('.nav a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+</script>
+
+</body>
+</html>
